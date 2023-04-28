@@ -1,7 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devnology_challenge">
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
    <application
-        android:label="devnology_challenge"
+        android:label="Devnology Challenge"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
