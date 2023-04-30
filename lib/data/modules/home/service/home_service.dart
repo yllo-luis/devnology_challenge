@@ -1,15 +1,31 @@
+import 'dart:convert';
+import 'package:dio/dio.dart';
+
 import 'package:devnology_challenge/data/modules/home/response/event_response.dart';
 import 'package:devnology_challenge/data/modules/home/service/home_service_contract.dart';
+import 'package:devnology_challenge/data/api/api_constants.dart';
 
 class HomeService implements HomeServiceContract {
+  final dio = Dio();
+
   @override
-  Future<EventResponse> getEvent() {
-    // TODO: implement getEvent
-    throw UnimplementedError();
+  Future<EventResponse> getEvent() async {
+    Response httpResponse;
+    httpResponse = await dio.get(ApiConstants.serverUrlActivityEndpoint);
+    if (httpResponse.statusCode == 200) {
+      return EventResponse.fromJson(
+        httpResponse.data,
+      );
+    }
+    throw Exception(
+      httpResponse.statusCode.toString() +
+          httpResponse.statusMessage.toString(),
+    );
   }
 
   @override
-  Future<EventResponse> getEventPerParticipants({required String participants}) {
+  Future<EventResponse> getEventPerParticipants(
+      {required String participants}) {
     // TODO: implement getEventPerParticipants
     throw UnimplementedError();
   }
@@ -27,7 +43,8 @@ class HomeService implements HomeServiceContract {
   }
 
   @override
-  Future<EventResponse> getEventWithAccessibility({required double accessibility}) {
+  Future<EventResponse> getEventWithAccessibility(
+      {required double accessibility}) {
     // TODO: implement getEventWithAccessibility
     throw UnimplementedError();
   }

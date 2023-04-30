@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:developer';
 
-import 'package:catcher/core/catcher.dart';
 import 'package:devnology_challenge/core/helpers/database/database_helper_contract.dart';
 import 'package:devnology_challenge/data/modules/saved_events/response/event_response.dart';
 import 'package:sqflite/sqflite.dart';
@@ -29,7 +28,7 @@ class DatabaseHelper implements DatabaseHelperContract {
         onCreate: (db, version) => createDatabase(database: db),
       );
     } catch (e, stacktrace) {
-      Catcher.reportCheckedError(e, stacktrace);
+      log('Database error', stackTrace: stacktrace);
     }
   }
 

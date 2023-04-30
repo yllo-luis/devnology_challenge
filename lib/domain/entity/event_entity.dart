@@ -1,9 +1,9 @@
 class EventEntity {
   String? activity;
-  double? accessibility;
+  String? accessibility;
   String? type;
-  int? participants;
-  double? price;
+  String? participants;
+  String? price;
   String? link;
   String? key;
 
@@ -16,26 +16,4 @@ class EventEntity {
     this.link,
     this.key,
   });
-
-  EventEntity.fromJson(Map<String, dynamic> json) {
-    activity = json['activity'];
-    accessibility = json['accessibility'];
-    type = json['type'];
-    participants = json['participants'];
-    price = json['price'];
-    link = json['link'];
-    key = json['key'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['activity'] = this.activity;
-    data['accessibility'] = this.accessibility;
-    data['type'] = this.type;
-    data['participants'] = this.participants;
-    data['price'] = this.price;
-    data['link'] = this.link;
-    data['key'] = this.key;
-    return data;
-  }
 }

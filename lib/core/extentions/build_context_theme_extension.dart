@@ -7,16 +7,14 @@ extension BuildContextThemeExtension on BuildContext {
   Color getThemeColor({AppColorEnum? appColorTheme}) {
     if (appColorTheme != null) {
       switch (appColorTheme) {
-        case AppColorEnum.defaultOrange:
-          return const Color(0xFFD65743);
-        case AppColorEnum.darkSand:
-          return const Color(0xFFCBA146);
-        case AppColorEnum.backgroundBordeaux:
-          return const Color(0xFF573139);
-        case AppColorEnum.darkRed:
-          return const Color(0xFF9B3644);
-        case AppColorEnum.lightSand:
-          return const Color(0xFFE1CC9D);
+        case AppColorEnum.defaultNavy:
+          return const Color(0xFF2A2F4F);
+        case AppColorEnum.lightNavy:
+          return const Color(0xFF917FB3);
+        case AppColorEnum.lightPink:
+          return const Color(0xFFE5BEEC);
+        case AppColorEnum.lighterPink:
+          return const Color(0xFFFDE2F3);
       }
     }
     return const Color(0xFFFFFFFF);

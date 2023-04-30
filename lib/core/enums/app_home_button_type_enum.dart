@@ -1,5 +1,5 @@
 enum AppHomeButtonTypeEnum {
-  search,
-  reserve,
-  update,
+  updateEvent,
+  changeEventParam,
+  savedEvents,
 }

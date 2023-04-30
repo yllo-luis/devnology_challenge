@@ -1,4 +1,5 @@
 {
     "onErrorTitle": "Parece que um erro critico ocorreu!",
-    "onErrorSubtitle": "Estamos trabalhando o mais rápido possível para resolver o problema :3"
+    "onErrorSubtitle": "Estamos trabalhando o mais rápido possível para resolver o problema :3",
+    "homePageTitle": "O evento do dia é..."
 }

@@ -20,7 +20,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: context.getThemeColor(
-        appColorTheme: AppColorEnum.backgroundBordeaux,
+        appColorTheme: AppColorEnum.lightPink,
       ),
       title: SizedBox(
         height: 45,

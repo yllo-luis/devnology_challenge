@@ -13,10 +13,10 @@ class EventResponse extends EventEntity {
 
   EventResponse.fromJson(Map<String, dynamic> json) {
     activity = json['activity'];
-    accessibility = json['accessibility'];
+    accessibility = json['accessibility'].toString();
     type = json['type'];
-    participants = json['participants'];
-    price = json['price'];
+    participants = json['participants'].toString();
+    price = json['price'].toString();
     link = json['link'];
     key = json['key'];
   }

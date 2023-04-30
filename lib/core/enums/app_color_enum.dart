@@ -1,7 +1,6 @@
 enum AppColorEnum {
-  defaultOrange,
-  darkSand,
-  backgroundBordeaux,
-  darkRed,
-  lightSand
+  defaultNavy,
+  lightNavy,
+  lightPink,
+  lighterPink,
 }

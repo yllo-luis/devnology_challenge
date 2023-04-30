@@ -27,6 +27,7 @@ dependencies:
   url_launcher: ^6.1.10
   sqflite: ^2.2.6
   flutter_modular: ^5.0.3
+  dio: ^5.1.1
 
   # Internationalization
   flutter_localizations:
