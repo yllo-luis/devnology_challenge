@@ -1,5 +1,10 @@
 {
   "onErrorTitle": "It seems that a critical error has occurred!",
   "onErrorSubtitle": "We are working as fast as possible to solve the problem :3",
-  "homePageTitle": "The event of the day is..."
+  "homePageTitle": "The event of the day is...",
+  "homeDialogAccessibilityTitle": "Accessibility",
+  "homeDialogParticipansTitle": "Participants",
+  "homeDialogPriceTitle": "Price Range",
+  "homeDialogSaveButtonTitle": "Save",
+  "homeDialogCancelButtonTitle": "Cancel"
 }

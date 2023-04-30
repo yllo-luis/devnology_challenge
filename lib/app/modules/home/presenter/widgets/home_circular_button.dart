@@ -1,16 +1,24 @@
+import 'package:devnology_challenge/core/constants/app_constants_utils.dart';
 import 'package:devnology_challenge/core/enums/app_color_enum.dart';
 import 'package:devnology_challenge/core/extentions/build_context_theme_extension.dart';
 import 'package:flutter/material.dart';
 
-class HomeCircularButton extends StatelessWidget {
+class HomeCircularButton extends StatefulWidget {
   final IconData iconToShow;
-  final Function onTap;
+  final Future Function() onTap;
 
   const HomeCircularButton({
     super.key,
     required this.iconToShow,
     required this.onTap,
   });
+
+  @override
+  State<HomeCircularButton> createState() => _HomeCircularButtonState();
+}
+
+class _HomeCircularButtonState extends State<HomeCircularButton> {
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +34,37 @@ class HomeCircularButton extends StatelessWidget {
         ),
       ),
       child: GestureDetector(
-        onTap: () => onTap(),
-        child: Icon(
-          iconToShow,
-          color: context.getThemeColor(
-            appColorTheme: AppColorEnum.lighterPink,
-          ),
-          size: 25,
+        onTap: () {
+          if (isLoading == false) {
+            setState(() {
+              isLoading = true;
+            });
+            widget.onTap().whenComplete(
+                  () => setState(
+                    () => isLoading = !isLoading,
+                  ),
+                );
+          }
+        },
+        child: AnimatedSwitcher(
+          duration: AppConstantsUtils.defaultAnimationDuration,
+          child: isLoading == false
+              ? Icon(
+                  widget.iconToShow,
+                  color: context.getThemeColor(
+                    appColorTheme: AppColorEnum.lighterPink,
+                  ),
+                  size: 25,
+                )
+              : SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: CircularProgressIndicator(
+                    color: context.getThemeColor(
+                      appColorTheme: AppColorEnum.lightNavy,
+                    ),
+                  ),
+                ),
         ),
       ),
     );

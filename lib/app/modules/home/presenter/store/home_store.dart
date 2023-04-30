@@ -1,18 +1,18 @@
 import 'dart:async';
 
+import 'package:devnology_challenge/core/constants/app_constants_utils.dart';
 import 'package:devnology_challenge/data/modules/home/response/event_response.dart';
+import 'package:flutter/cupertino.dart';
 
 class HomeStore {
   late StreamController<EventResponse> eventController;
-  late StreamController<double> accessibilityController;
-  late StreamController<int> participantsController;
-  late StreamController<double> priceController;
+
+  late ValueNotifier<double> accessibilityNotifier = ValueNotifier(AppConstantsUtils.minAccessibilityValue);
+  late ValueNotifier<double> participantsNotifier = ValueNotifier(AppConstantsUtils.minParticipantsValue);
+  late ValueNotifier<double> priceNotifier = ValueNotifier(AppConstantsUtils.minPriceValue);
 
   HomeStore() {
     eventController = StreamController.broadcast();
-    accessibilityController = StreamController.broadcast();
-    participantsController = StreamController.broadcast();
-    priceController = StreamController.broadcast();
   }
 
   void addEvent({required EventResponse response}) {
@@ -24,8 +24,5 @@ class HomeStore {
 
   void onDispose() {
     eventController.close();
-    accessibilityController.close();
-    participantsController.close();
-    priceController.close();
   }
 }
