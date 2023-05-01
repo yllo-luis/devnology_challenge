@@ -32,19 +32,22 @@ class DatabaseHelper implements DatabaseHelperContract {
     }
   }
 
-  Future<void> insertIntoDatabase({required EventResponse event}) async {
+  Future<bool> insertIntoDatabase({required EventResponse event}) async {
     if (database == null) {
       await validateAndStartDatabase();
     }
-    await database?.transaction((txn) async {
-      int result = await txn.rawInsert(
+    try {
+      int? result = await database?.rawInsert(
         'INSERT INTO $databaseName(key, activity, accessibility, type, participants, price, link) VALUES (?, ?, ?, ?, ?, ?, ?)',
         List.from(
           event.toJson().values.toList(),
         ),
       );
-      log('Database inserted $result');
-    });
+      return result != 0;
+    } catch (e, stacktrace) {
+      log('Database error', error: e.toString(), stackTrace: stacktrace);
+    }
+    return false;
   }
 
   Future<void> updateDatabase({required EventResponse event}) async {

@@ -1,4 +1,4 @@
-import 'package:devnology_challenge/app/modules/saved_events/store/saved_events_store.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/store/saved_events_store.dart';
 import 'package:devnology_challenge/core/helpers/launcher/launcher_contract.dart';
 import 'package:devnology_challenge/domain/use_case/module/saved_events/delete_event_from_database_use_case.dart';
 import 'package:devnology_challenge/domain/use_case/module/saved_events/get_event_from_database_use_case.dart';

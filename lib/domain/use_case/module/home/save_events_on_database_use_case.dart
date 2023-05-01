@@ -6,6 +6,6 @@ class SaveEventsOnDatabaseUseCase {
 
   SaveEventsOnDatabaseUseCase({required this.databaseHelper});
 
-  Future<void> saveEventsOnDatabase({required EventResponse event}) async =>
+  Future<bool> saveEventsOnDatabase({required EventResponse event}) async =>
       databaseHelper.insertIntoDatabase(event: event);
 }

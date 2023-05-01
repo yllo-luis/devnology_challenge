@@ -22,30 +22,4 @@ class HomeService implements HomeServiceContract {
           httpResponse.statusMessage.toString(),
     );
   }
-
-  @override
-  Future<EventResponse> getEventPerParticipants(
-      {required String participants}) {
-    // TODO: implement getEventPerParticipants
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<EventResponse> getEventPerPrice({required double price}) {
-    // TODO: implement getEventPerPrice
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<EventResponse> getEventPerType({required String type}) {
-    // TODO: implement getEventPerType
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<EventResponse> getEventWithAccessibility(
-      {required double accessibility}) {
-    // TODO: implement getEventWithAccessibility
-    throw UnimplementedError();
-  }
 }

@@ -22,30 +22,30 @@ class _HomeCircularButtonState extends State<HomeCircularButton> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: context.getThemeColor(
-            appColorTheme: AppColorEnum.lighterPink,
+    return GestureDetector(
+      onTap: () {
+        if (isLoading == false) {
+          setState(() {
+            isLoading = true;
+          });
+          widget.onTap().whenComplete(
+                () => setState(
+                  () => isLoading = !isLoading,
+            ),
+          );
+        }
+      },
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: context.getThemeColor(
+              appColorTheme: AppColorEnum.lighterPink,
+            ),
           ),
         ),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          if (isLoading == false) {
-            setState(() {
-              isLoading = true;
-            });
-            widget.onTap().whenComplete(
-                  () => setState(
-                    () => isLoading = !isLoading,
-                  ),
-                );
-          }
-        },
         child: AnimatedSwitcher(
           duration: AppConstantsUtils.defaultAnimationDuration,
           child: isLoading == false

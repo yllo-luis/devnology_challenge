@@ -38,20 +38,25 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             child: StreamBuilder<EventResponse>(
               stream: controller.homeStore.currentEventStream,
               builder: (context, eventSnapshot) {
-                return Container(
-                  height: 200,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: context.getThemeColor(
-                        appColorTheme: AppColorEnum.lighterPink,
-                      ),
-                    ),
-                    borderRadius: BorderRadius.circular(25),
+                return GestureDetector(
+                  onTap: () => controller.openWebPage(
+                    uri: eventSnapshot.data?.link,
                   ),
-                  child: HomeEventLayout(
-                    isLoading: eventSnapshot.connectionState,
-                    event: eventSnapshot.data,
+                  child: Container(
+                    height: 200,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: context.getThemeColor(
+                          appColorTheme: AppColorEnum.lighterPink,
+                        ),
+                      ),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: HomeEventLayout(
+                      isLoading: eventSnapshot.connectionState,
+                      event: eventSnapshot.data,
+                    ),
                   ),
                 );
               },
@@ -69,22 +74,38 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 HomeCircularButton(
                   iconToShow: Icons.settings_suggest,
                   onTap: () => Future(
-                    () => showOptionsDialog(),
-                  ),
-                ),
-                HomeCircularButton(
-                  iconToShow: Icons.bookmarks_outlined,
-                  onTap: () =>
-                      Future(() => controller.saveCurrentEvent()).whenComplete(
                     () => ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
                           AppLocalizations.of(context)!
-                              .homeScaffoldSavedEventTitle,
+                              .featureWillBeImplementedFuture,
+                          style: GoogleFonts.poppins(
+                            color: context.getThemeColor(),
+                          ),
+                        ),
+                        backgroundColor: context.getThemeColor(
+                          appColorTheme: AppColorEnum.lightNavy,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                HomeCircularButton(
+                  iconToShow: Icons.bookmarks_outlined,
+                  onTap: () => Future(() => controller.saveCurrentEvent()).then(
+                    (value) => ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          value
+                              ? AppLocalizations.of(context)!
+                                  .homeScaffoldSavedEventTitle
+                              : AppLocalizations.of(context)!
+                                  .homeScaffoldEventNotSavedTitle,
                           style: GoogleFonts.poppins(),
                         ),
                         backgroundColor: context.getThemeColor(
-                            appColorTheme: AppColorEnum.lightNavy),
+                          appColorTheme: AppColorEnum.lightNavy,
+                        ),
                       ),
                     ),
                   ),
@@ -105,7 +126,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                                 ),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: context.getThemeColor(
-                              appColorTheme: AppColorEnum.lightPink),
+                            appColorTheme: AppColorEnum.lightPink,
+                          ),
                           side: BorderSide(
                             color: context.getThemeColor(
                               appColorTheme: AppColorEnum.lighterPink,

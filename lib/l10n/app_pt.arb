@@ -8,6 +8,7 @@
     "homeDialogSaveButtonTitle": "Salvar",
     "homeDialogResetButtonTitle": "Redefinir",
     "homeScaffoldSavedEventTitle": "Evento Salvo :D",
+    "homeScaffoldEventNotSavedTitle": "Parece que seu evento não foi salvo. Verifique se ele já foi salvo em outro momento.",
     "homeButtonSeeAllSavedEvents": "Visualizar {count} eventos salvos",
     "@homeButtonSeeAllSavedEvents": {
         "placeholders": {
@@ -17,6 +18,7 @@
             }
         }
     },
+    "featureWillBeImplementedFuture": "Este recurso será implementado no futuro!",
     "savedEventsCardPersonsTitle": "{persons} people",
     "savedEventsCardPersonsGoodAccessibilityTitle": "Acessível para todos",
     "savedEventsCardPersonsBadAccessibilityTitle": "Não é acessível para todos",

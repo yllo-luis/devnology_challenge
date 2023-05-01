@@ -8,7 +8,9 @@ import '../../../../data/modules/home/response/event_response.dart';
 class GetEventFromDatabaseUseCase {
   final DatabaseHelperContract databaseHelper;
 
-  GetEventFromDatabaseUseCase({required this.databaseHelper});
+  GetEventFromDatabaseUseCase({
+    required this.databaseHelper,
+  });
 
   Future<List<EventResponse>> getEvent() async {
     List<EventResponse> result = List.empty(growable: true);

@@ -1,11 +1,11 @@
-import 'package:devnology_challenge/app/modules/saved_events/controller/saved_events_controller.dart';
-import 'package:devnology_challenge/app/modules/saved_events/store/saved_events_store.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/controller/saved_events_controller.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/store/saved_events_store.dart';
 import 'package:devnology_challenge/core/helpers/launcher/launch_helper.dart';
 import 'package:devnology_challenge/core/helpers/launcher/launcher_contract.dart';
 import 'package:devnology_challenge/domain/use_case/module/saved_events/delete_event_from_database_use_case.dart';
 import 'package:devnology_challenge/domain/use_case/module/saved_events/get_event_from_database_use_case.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:devnology_challenge/app/modules/saved_events/pages/saved_events_page.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/pages/saved_events_page.dart';
 
 class SavedEventsModule extends Module {
   List<ModularRoute> get routes => List.from(

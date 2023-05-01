@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 abstract class DatabaseHelperContract {
   Future<void> validateAndStartDatabase();
-  Future<void> insertIntoDatabase({required EventResponse event});
+  Future<bool> insertIntoDatabase({required EventResponse event});
   Future<void> updateDatabase({required EventResponse event});
   Future<List<Map<String, dynamic>>> getAllSavedEvents();
   Future<int> countAllSavedEvents();

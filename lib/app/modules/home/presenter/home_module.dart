@@ -33,6 +33,7 @@ class HomeModule extends Module {
         getCountSavedEvents: i(),
         saveEventsOnDatabaseUseCase: i(),
         getEventUseCase: i(),
+        launcherHelper: i(),
       ),
     )
   ]);

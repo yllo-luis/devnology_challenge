@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:devnology_challenge/core/enums/app_color_enum.dart';
 import 'package:devnology_challenge/core/extentions/build_context_theme_extension.dart';
 import 'package:devnology_challenge/data/modules/home/response/event_response.dart';
-import 'package:devnology_challenge/app/modules/saved_events/controller/saved_events_controller.dart';
-import 'package:devnology_challenge/app/modules/saved_events/widgets/saved_events_tile.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/controller/saved_events_controller.dart';
+import 'package:devnology_challenge/app/modules/saved_events/presenter/widgets/saved_events_tile.dart';
 import 'package:devnology_challenge/core/constants/app_constants_utils.dart';
 
 class SavedEventsPage extends StatefulWidget {
@@ -31,6 +31,12 @@ class _SavedEventsPageState
       appBar: AppBar(
         backgroundColor: context.getThemeColor(
           appColorTheme: AppColorEnum.defaultNavy,
+        ),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
         ),
       ),
       body: StreamBuilder<List<EventResponse>>(
