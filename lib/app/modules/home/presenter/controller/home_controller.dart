@@ -23,7 +23,7 @@ class HomeController {
     init();
   }
 
-  void init() async {
+  Future<void> init() async {
     await Future(() {
       getAEvent();
       countSavedEvents();
