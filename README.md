@@ -1,16 +1,15 @@
 # devnology_challenge
 
-A new Flutter project.
+Projeto voltado para a implementação do desafio proposto pela empresa WBC. O foco foi criar um sistema de reservas para churrascarias em um condomínio ou qualquer outro ambiente.
 
-## Getting Started
+O aplicativo conta com uma implementação de banco de dados local ([sqflite](https://pub.dev/packages/sqflite)) e também com implementações de elementos básicos de uma aplicação flutter (como [gerenciamento de dependências](https://pub.dev/packages/flutter_modular), por exemplo).
 
-This project is a starting point for a Flutter application.
+O layout da aplicação foi prototipado e está disponível para [visualização](https://www.figma.com/file/LEArfwUTdNKkezGweUpyJT/Devnology-Challenge?type=design&node-id=0%3A1&t=ZlBYh8tEkzYBMp53-1).
 
-A few resources to get you started if this is your first Flutter project:
+# Iniciando a aplicação
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Para iniciar esta aplicação, basta instalar o APK anexado a este e-mail ou executar o código-fonte utilizando o comando `flutter run`.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dependendo da quantidade de dispositivos plugados, uma escolha deverá ser feita. Considere que o aplicativo foi pensado para o ambiente mobile.
+
+Também foram implementados testes unitários para garantir a qualidade do código. Para iniciá-los, basta executar o comando `flutter pub run build_runner build --delete-conflicting-outputs` e depois rodar os testes em qualquer IDE.
