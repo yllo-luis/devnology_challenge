@@ -185,7 +185,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               onChanged: (value) =>
                   controller.homeStore.priceNotifier.value = value,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -195,22 +195,18 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                   onPressed: () => controller.resetDialogData().whenComplete(
                         () => Navigator.pop(context),
                       ),
-                  child: Text(
-                    AppLocalizations.of(context)!.homeDialogResetButtonTitle,
-                    style: GoogleFonts.poppins(),
-                  ),
                   style: TextButton.styleFrom(
                     foregroundColor: context.getThemeColor(
                       appColorTheme: AppColorEnum.defaultNavy,
                     ),
                   ),
+                  child: Text(
+                    AppLocalizations.of(context)!.homeDialogResetButtonTitle,
+                    style: GoogleFonts.poppins(),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    AppLocalizations.of(context)!.homeDialogSaveButtonTitle,
-                    style: GoogleFonts.poppins(),
-                  ),
                   style: ButtonStyle(
                     elevation: MaterialStateProperty.resolveWith(
                       (_) => 0,
@@ -220,6 +216,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         appColorTheme: AppColorEnum.lightNavy,
                       ),
                     ),
+                  ),
+                  child: Text(
+                    AppLocalizations.of(context)!.homeDialogSaveButtonTitle,
+                    style: GoogleFonts.poppins(),
                   ),
                 ),
               ],

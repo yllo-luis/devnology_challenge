@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import 'package:devnology_challenge/data/modules/home/response/event_response.dart';

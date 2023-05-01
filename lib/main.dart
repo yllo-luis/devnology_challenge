@@ -15,7 +15,7 @@ void main() {
   runApp(
     ModularApp(
       module: AppModule(),
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

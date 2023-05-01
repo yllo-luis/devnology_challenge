@@ -42,7 +42,7 @@ void main() {
         (_) => Future.value(
           List<Map<String, dynamic>>.generate(
             2,
-            (index) => Map.new(),
+            (index) => {},
           ),
         ),
       );
@@ -54,7 +54,7 @@ void main() {
         launcherHelper: fakeLaunchContract,
       );
 
-      Future.delayed(Duration(seconds: 1));
+      Future.delayed(const Duration(seconds: 1));
 
       verify(fakeDatabase.getAllSavedEvents()).called(1);
       expect(
@@ -64,13 +64,13 @@ void main() {
     });
 
     test('When deleting events then stream must be updated', () async {
-      final int fakeId = 0;
+      const int fakeId = 0;
 
       when(fakeDatabase.getAllSavedEvents()).thenAnswer(
         (_) => Future.value(
           List<Map<String, dynamic>>.generate(
             1,
-            (index) => Map.new(),
+            (index) => {},
           ),
         ),
       );
@@ -83,7 +83,7 @@ void main() {
         launcherHelper: fakeLaunchContract,
       );
 
-      Future.delayed(Duration(seconds: 1));
+      Future.delayed(const Duration(seconds: 1));
 
       await deleteEventFromDatabaseUseCase.deleteSavedEvent(eventId: fakeId);
 

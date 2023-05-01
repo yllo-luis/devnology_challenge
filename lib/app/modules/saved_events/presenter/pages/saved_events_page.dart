@@ -34,7 +34,7 @@ class _SavedEventsPageState
         ),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
         ),
@@ -68,7 +68,6 @@ class _mountPageLayout extends StatelessWidget {
   final SavedEventsController controller;
 
   const _mountPageLayout({
-    super.key,
     required this.events,
     required this.controller,
   });
@@ -76,7 +75,7 @@ class _mountPageLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         vertical: 16.0,
         horizontal: 24.0,
       ),
@@ -97,10 +96,10 @@ class _mountPageLayout extends StatelessWidget {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => SizedBox(height: 12),
+              separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemCount: events.length,
             )
-          : Center(
+          : const Center(
               child: _mountEmptyListLayout(),
             ),
     );
@@ -116,7 +115,7 @@ class _mountEmptyListLayout extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.sentiment_dissatisfied,
           size: 70,
         ),

@@ -24,7 +24,7 @@ class SavedEventsTile extends StatelessWidget {
     return Container(
       height: event.link?.isEmpty == true ? 160 : 200,
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       decoration: BoxDecoration(
         color: context.getThemeColor(
           appColorTheme: AppColorEnum.lightNavy,
@@ -75,7 +75,7 @@ class SavedEventsTile extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
@@ -97,7 +97,7 @@ class SavedEventsTile extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
@@ -119,7 +119,7 @@ class SavedEventsTile extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           event.link?.isNotEmpty == true

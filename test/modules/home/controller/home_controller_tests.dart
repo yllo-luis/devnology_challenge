@@ -64,7 +64,7 @@ void main() {
       );
 
       await Future.delayed(
-        Duration(seconds: 1),
+        const Duration(seconds: 1),
       );
 
       verify(getEventUseCase.getEvent()).called(1);
@@ -110,7 +110,7 @@ void main() {
 
       controller?.homeStore.eventController.add(fakeEvent);
       final fetchedFakeEvent =
-          await controller!.homeStore.eventController.value;
+          controller!.homeStore.eventController.value;
 
       when(fakeDatabaseHelper.insertIntoDatabase(
         event: fetchedFakeEvent,
@@ -131,7 +131,7 @@ void main() {
 
     test('When a event has a url launcher browser helper should be called',
         () async {
-      final String fakeUrl = 'http://thisIsAFakeUrl.com';
+      const String fakeUrl = 'http://thisIsAFakeUrl.com';
       final Uri url = Uri.parse(fakeUrl);
 
       controller = HomeController(
@@ -157,7 +157,7 @@ void main() {
     test(
         'When a event does not have a url launcher browser helper should not be called',
         () async {
-      final String fakeUrl = 'http://thisIsAFakeUrl.com';
+      const String fakeUrl = 'http://thisIsAFakeUrl.com';
       final Uri url = Uri.parse(fakeUrl);
 
       controller = HomeController(

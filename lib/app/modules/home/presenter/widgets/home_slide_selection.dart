@@ -29,7 +29,7 @@ class _HomeSlideSelectionState extends State<HomeSlideSelection> {
   String label = AppConstantsUtils.emptyString;
   double minValue = 0;
   double maxValue = 0;
-  final formatCurrency = new NumberFormat.simpleCurrency();
+  final formatCurrency = NumberFormat.simpleCurrency();
 
   @override
   void initState() {

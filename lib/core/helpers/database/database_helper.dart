@@ -15,6 +15,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     validateAndStartDatabase();
   }
 
+  @override
   Future<void> validateAndStartDatabase() async {
     String databasePath = await getDatabasesPath();
     String path = databasePath;
@@ -23,7 +24,7 @@ class DatabaseHelper implements DatabaseHelperContract {
         await Directory(path).create(recursive: true);
       }
       database = await openDatabase(
-        '$path${'/' + AppConstantsUtils.databaseName}',
+        '$path${'/${AppConstantsUtils.databaseName}'}',
         version: 1,
         onCreate: (db, version) => createDatabase(database: db),
       );
@@ -32,6 +33,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     }
   }
 
+  @override
   Future<bool> insertIntoDatabase({required EventResponse event}) async {
     if (database == null) {
       await validateAndStartDatabase();
@@ -50,6 +52,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     return false;
   }
 
+  @override
   Future<void> updateDatabase({required EventResponse event}) async {
     if (database == null) {
       await validateAndStartDatabase();
@@ -64,6 +67,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     );
   }
 
+  @override
   Future<List<Map<String, dynamic>>> getAllSavedEvents() async {
     if (database == null) {
       await validateAndStartDatabase();
@@ -74,6 +78,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     return results;
   }
 
+  @override
   Future<bool> deleteEvent({required int keyEvent}) async {
     if (database == null) {
       await validateAndStartDatabase();
@@ -83,6 +88,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     return result != 0;
   }
 
+  @override
   Future<void> createDatabase({required Database database}) async {
     database.execute(
       'CREATE TABLE $databaseName (key TEXT PRIMARY KEY, activity TEXT, accessibility TEXT, type TEXT,participants TEXT, price TEXT, link TEXT)',

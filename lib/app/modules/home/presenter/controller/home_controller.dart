@@ -39,7 +39,7 @@ class HomeController {
   }
 
   Future<bool> saveCurrentEvent() async {
-    final EventResponse savedEvents = await homeStore.eventController.value;
+    final EventResponse savedEvents = homeStore.eventController.value;
     bool isSaved = await saveEventsOnDatabaseUseCase
         .saveEventsOnDatabase(event: savedEvents)
         .then((result) {

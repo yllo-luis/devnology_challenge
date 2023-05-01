@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:devnology_challenge/data/modules/home/service/home_service_contract.dart';
 

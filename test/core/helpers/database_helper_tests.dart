@@ -27,7 +27,7 @@ void main() {
 
       databaseHelper = DatabaseHelper();
 
-      Future.delayed(Duration(microseconds: 500));
+      Future.delayed(const Duration(microseconds: 500));
     });
 
     test('When inserting new data into database the result should be true', () async {

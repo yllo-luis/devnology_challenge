@@ -8,11 +8,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:devnology_challenge/app/modules/saved_events/presenter/pages/saved_events_page.dart';
 
 class SavedEventsModule extends Module {
+  @override
   List<ModularRoute> get routes => List.from(
         [
           ChildRoute(
             '/',
-            child: (context, args) => SavedEventsPage(),
+            child: (context, args) => const SavedEventsPage(),
           )
         ],
       );
