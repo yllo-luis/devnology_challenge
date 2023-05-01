@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:developer';
 
 import 'package:devnology_challenge/core/helpers/database/database_helper_contract.dart';
-import 'package:devnology_challenge/data/modules/saved_events/response/event_response.dart';
+import 'package:devnology_challenge/data/modules/home/response/event_response.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../constants/app_constants_utils.dart';
@@ -38,7 +38,7 @@ class DatabaseHelper implements DatabaseHelperContract {
     }
     await database?.transaction((txn) async {
       int result = await txn.rawInsert(
-        'INSERT INTO $databaseName(key, activity, accessibility, type, participants, price, link, dateToEvent) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        'INSERT INTO $databaseName(key, activity, accessibility, type, participants, price, link) VALUES (?, ?, ?, ?, ?, ?, ?)',
         List.from(
           event.toJson().values.toList(),
         ),
@@ -48,6 +48,9 @@ class DatabaseHelper implements DatabaseHelperContract {
   }
 
   Future<void> updateDatabase({required EventResponse event}) async {
+    if (database == null) {
+      await validateAndStartDatabase();
+    }
     await database
         ?.update(databaseName, event.toJson(), where: 'key = ?', whereArgs: [
       event.key ?? 0,
@@ -59,6 +62,9 @@ class DatabaseHelper implements DatabaseHelperContract {
   }
 
   Future<List<Map<String, dynamic>>> getAllSavedEvents() async {
+    if (database == null) {
+      await validateAndStartDatabase();
+    }
     List<Map<String, dynamic>> results = await database!.rawQuery(
       'SELECT * FROM $databaseName',
     );
@@ -66,14 +72,28 @@ class DatabaseHelper implements DatabaseHelperContract {
   }
 
   Future<bool> deleteEvent({required int keyEvent}) async {
-    int result = await database!.rawDelete(
-        'DELETE FROM $databaseName WHERE key = $keyEvent');
+    if (database == null) {
+      await validateAndStartDatabase();
+    }
+    int result = await database!
+        .rawDelete('DELETE FROM $databaseName WHERE key = $keyEvent');
     return result != 0;
   }
 
   Future<void> createDatabase({required Database database}) async {
     database.execute(
-      'CREATE TABLE $databaseName (key INTEGER PRIMARY KEY, activity TEXT, accessibility TEXT, type TEXT,participants TEXT, price TEXT, link TEXT, dateToEvent TEXT)',
+      'CREATE TABLE $databaseName (key TEXT PRIMARY KEY, activity TEXT, accessibility TEXT, type TEXT,participants TEXT, price TEXT, link TEXT)',
     );
+  }
+
+  @override
+  Future<int> countAllSavedEvents() async {
+    if (database == null) {
+      await validateAndStartDatabase();
+    }
+    List<Map<String, dynamic>> results = await database!.rawQuery(
+      'SELECT * FROM $databaseName',
+    );
+    return results.length;
   }
 }

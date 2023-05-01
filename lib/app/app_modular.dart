@@ -7,6 +7,8 @@ import 'package:devnology_challenge/data/modules/home/service/home_service.dart'
 import 'package:devnology_challenge/data/modules/home/service/home_service_contract.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'modules/saved_events/saved_events_module.dart';
+
 class AppModule extends Module {
   @override
   List<Bind> get binds => List.from(
@@ -30,6 +32,10 @@ class AppModule extends Module {
             Modular.initialRoute,
             module: HomeModule(),
           ),
+          ModuleRoute(
+            '/savedEvents/',
+            module: SavedEventsModule(),
+          )
         ],
       );
 }

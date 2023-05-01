@@ -1,3 +1,4 @@
+import 'package:devnology_challenge/core/constants/app_constants_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -22,11 +23,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: context.getThemeColor(
+    return Scaffold(
+      backgroundColor: context.getThemeColor(
         appColorTheme: AppColorEnum.defaultNavy,
       ),
-      child: Column(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
@@ -35,45 +36,100 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               vertical: 24.0,
             ),
             child: StreamBuilder<EventResponse>(
-                stream: controller.homeStore.currentEventStream,
-                builder: (context, eventSnapshot) {
-                  return Container(
-                    height: 200,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      border: Border.all(
+              stream: controller.homeStore.currentEventStream,
+              builder: (context, eventSnapshot) {
+                return Container(
+                  height: 200,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: context.getThemeColor(
+                        appColorTheme: AppColorEnum.lighterPink,
+                      ),
+                    ),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: HomeEventLayout(
+                    isLoading: eventSnapshot.connectionState,
+                    event: eventSnapshot.data,
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 32.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                HomeCircularButton(
+                  iconToShow: Icons.update,
+                  onTap: () => controller.getAEvent(),
+                ),
+                HomeCircularButton(
+                  iconToShow: Icons.settings_suggest,
+                  onTap: () => Future(
+                    () => showOptionsDialog(),
+                  ),
+                ),
+                HomeCircularButton(
+                  iconToShow: Icons.bookmarks_outlined,
+                  onTap: () =>
+                      Future(() => controller.saveCurrentEvent()).whenComplete(
+                    () => ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          AppLocalizations.of(context)!
+                              .homeScaffoldSavedEventTitle,
+                          style: GoogleFonts.poppins(),
+                        ),
+                        backgroundColor: context.getThemeColor(
+                            appColorTheme: AppColorEnum.lightNavy),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          StreamBuilder<int>(
+            stream: controller.homeStore.savedEventsStream,
+            builder: (context, savedEvents) {
+              return AnimatedSwitcher(
+                duration: AppConstantsUtils.defaultAnimationDuration,
+                child: savedEvents.connectionState != ConnectionState.waiting
+                    ? OutlinedButton(
+                        onPressed: () =>
+                            Modular.to.pushNamed('/savedEvents/').whenComplete(
+                                  () => controller.countSavedEvents(),
+                                ),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: context.getThemeColor(
+                              appColorTheme: AppColorEnum.lightPink),
+                          side: BorderSide(
+                            color: context.getThemeColor(
+                              appColorTheme: AppColorEnum.lighterPink,
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          AppLocalizations.of(context)!
+                              .homeButtonSeeAllSavedEvents(
+                            savedEvents.data!.toString(),
+                          ),
+                          style: GoogleFonts.poppins(
+                            color: context.getThemeColor(),
+                          ),
+                        ),
+                      )
+                    : CircularProgressIndicator(
                         color: context.getThemeColor(
-                          appColorTheme: AppColorEnum.lighterPink,
+                          appColorTheme: AppColorEnum.lightNavy,
                         ),
                       ),
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                    child: HomeEventLayout(
-                      isLoading: eventSnapshot.connectionState,
-                      event: eventSnapshot.data,
-                    ),
-                  );
-                }),
+              );
+            },
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              HomeCircularButton(
-                iconToShow: Icons.update,
-                onTap: () => controller.getAEvent(),
-              ),
-              HomeCircularButton(
-                iconToShow: Icons.settings_suggest,
-                onTap: () => Future(
-                  () => showOptionsDialog(),
-                ),
-              ),
-              HomeCircularButton(
-                iconToShow: Icons.bookmarks_outlined,
-                onTap: () => Future(() => null),
-              ),
-            ],
-          )
         ],
       ),
     );
@@ -118,7 +174,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                         () => Navigator.pop(context),
                       ),
                   child: Text(
-                    AppLocalizations.of(context)!.homeDialogCancelButtonTitle,
+                    AppLocalizations.of(context)!.homeDialogResetButtonTitle,
                     style: GoogleFonts.poppins(),
                   ),
                   style: TextButton.styleFrom(

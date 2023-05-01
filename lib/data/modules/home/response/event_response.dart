@@ -23,13 +23,13 @@ class EventResponse extends EventEntity {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['key'] = super.key;
     data['activity'] = super.activity;
     data['accessibility'] = super.accessibility;
     data['type'] = super.type;
     data['participants'] = super.participants;
     data['price'] = super.price;
     data['link'] = super.link;
-    data['key'] = super.key;
     return data;
   }
 }

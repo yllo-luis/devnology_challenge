@@ -6,5 +6,20 @@
     "homeDialogParticipansTitle": "Participantes",
     "homeDialogPriceTitle": "Preço",
     "homeDialogSaveButtonTitle": "Salvar",
-    "homeDialogCancelButtonTitle": "Cancelar"
+    "homeDialogResetButtonTitle": "Redefinir",
+    "homeScaffoldSavedEventTitle": "Evento Salvo :D",
+    "homeButtonSeeAllSavedEvents": "Visualizar {count} eventos salvos",
+    "@homeButtonSeeAllSavedEvents": {
+        "placeholders": {
+            "count": {
+                "type": "String",
+                "example": "8"
+            }
+        }
+    },
+    "savedEventsCardPersonsTitle": "{persons} people",
+    "savedEventsCardPersonsGoodAccessibilityTitle": "Acessível para todos",
+    "savedEventsCardPersonsBadAccessibilityTitle": "Não é acessível para todos",
+    "savedEventsFreeActivityTitle": "É de graça!",
+    "savedEventsEmptyListTitle": "Você pode salvar eventos! Quanto o fizer eles irão aparecer nesta tela!"
 }
